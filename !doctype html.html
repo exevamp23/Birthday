@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise Game</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #0d1b2a, #1b263b);
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        margin-top: 30px;
+        color: #00b4d8;
+    }
+    .game-box {
+        margin-top: 50px;
+    }
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #0077b6;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        background-color: #023e8a;
+    }
+    .hidden {
+        display: none;
+    }
+    .gift-box {
+        font-size: 60px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    .letter {
+        background-color: rgba(0, 180, 216, 0.1);
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 400px;
+        border: 2px solid #00b4d8;
+        border-radius: 15px;
+        color: #caf0f8;
+    }
+</style>
+</head>
+<body>
+    <h1>🎮 Happiestt Birthdayyyy Saismita 🎉</h1>
+    <p>Complete the mini challenge to unlock your gift 🎁</p>
+    
+    <div class="game-box" id="game">
+        <p>Guess the secret number between 1 and 5</p>
+        <input type="number" id="guess" min="1" max="5">
+        <button onclick="checkGuess()">Guess</button>
+        <p id="message"></p>
+    </div>
+
+    <div id="gift" class="hidden">
+        <div class="gift-box" onclick="openLetter()">🎁</div>
+        <p>Click the gift box to open</p>
+    </div>
+
+    <div id="letter" class="hidden">
+        <div class="letter">
+            <h2>💙 Happiesttt vala Birthday Saismita 💙</h2>
+            <p>I hope God gives you everything you wish for and blesses you with a long, healthy, and joyful life. 💫</p>
+            <p>You’re an amazing person and you deserve all the happiness in the world! 🌸</p>
+            <p>Enjoy your precious day to the fullest! 🥳💙</p>
+            <p>~ From Your Anirudh 💌</p>
+        </div>
+    </div>
+
+    <script>
+        const secretNumber = Math.floor(Math.random() * 5) + 1;
+        function checkGuess() {
+            const guess = document.getElementById('guess').value;
+            const message = document.getElementById('message');
+            if (guess == secretNumber) {
+                message.textContent = 'Correct! You unlocked your gift! 🎉';
+                document.getElementById('game').classList.add('hidden');
+                document.getElementById('gift').classList.remove('hidden');
+            } else {
+                message.textContent = 'Oops! Try again 😜';
+            }
+        }
+        function openLetter() {
+            document.getElementById('gift').classList.add('hidden');
+            document.getElementById('letter').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
